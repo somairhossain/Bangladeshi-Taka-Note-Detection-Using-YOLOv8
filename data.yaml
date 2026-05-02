@@ -1,6 +1,0 @@
-train: /content/drive/MyDrive/dataset/images/train
-val: /content/drive/MyDrive/dataset/images/val
-test: /content/drive/MyDrive/dataset/images/test
-
-nc: 9
-names: ['2 Tk', '5 Tk', '10 Tk', '20 Tk', '50 Tk', '100 Tk', '200 Tk', '500 Tk', '1000 Tk']
