@@ -4,57 +4,44 @@
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-brightgreen)](https://github.com/ultralytics/ultralytics)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Dataset](https://img.shields.io/badge/Dataset-Google%20Drive-orange)](YOUR_GOOGLE_DRIVE_LINK_HERE)
+[![Notebook](https://img.shields.io/badge/Open-Notebook-orange)](main.ipynb)
 
-> **Module 16 Assignment** — Detecting and classifying Bangladeshi Taka currency notes (and optionally coins) using a fine-tuned YOLOv8 object detection model.
+> **Module 16 Assignment** — Fine-tuning YOLOv8 to detect and classify all 9 denominations of Bangladeshi Taka currency notes in real-world conditions.
 
 ---
 
 ## 📌 Table of Contents
 
-- [Project Overview](#project-overview)
-- [Demo](#demo)
-- [Dataset](#dataset)
-- [Dataset Structure](#dataset-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Training](#training)
-  - [Evaluation](#evaluation)
-  - [Inference](#inference)
-- [Model Configuration](#model-configuration)
-- [Results](#results)
-- [Bonus: Coin Detection](#bonus-coin-detection)
-- [Project Structure](#project-structure)
-- [Acknowledgements](#acknowledgements)
+- [Project Overview](#-project-overview)
+- [Dataset](#-dataset)
+- [Dataset Structure](#-dataset-structure)
+- [Sample Images](#-sample-images)
+- [Model Training](#-model-training)
+- [Training Batch Samples](#-training-batch-samples)
+- [Model Evaluation](#-model-evaluation)
+- [Results](#-results)
+- [Installation & Usage](#-installation--usage)
+- [Project Structure](#-project-structure)
+- [Bonus: Coin Detection](#-bonus-coin-detection)
+- [Acknowledgements](#-acknowledgements)
 
 ---
 
 ## 📖 Project Overview
 
-This project trains a **YOLOv8** object detection model to identify and classify Bangladeshi Taka currency notes across **9 denominations**:
+This project fine-tunes a pretrained **YOLOv8n** model to detect and classify Bangladeshi Taka currency notes across **9 denominations**:
 
-| Denomination | Label |
-|---|---|
-| 2 Taka | `2tk` |
-| 5 Taka | `5tk` |
-| 10 Taka | `10tk` |
-| 20 Taka | `20tk` |
-| 50 Taka | `50tk` |
-| 100 Taka | `100tk` |
-| 200 Taka | `200tk` |
-| 500 Taka | `500tk` |
-| 1000 Taka | `1000tk` |
-
-The model is fine-tuned from a pretrained YOLOv8 checkpoint and evaluated on a held-out test set.
-
----
-
-## 🎬 Demo
-
-> Sample inference output with bounding boxes:
-
-![Inference Sample](assets/inference_sample.jpg)
-
-*More sample images are available in the [`results/`](results/) folder.*
+| # | Denomination | Class Label |
+|---|---|---|
+| 0 | 2 Taka | `2 Tk` |
+| 1 | 5 Taka | `5 Tk` |
+| 2 | 10 Taka | `10 Tk` |
+| 3 | 20 Taka | `20 Tk` |
+| 4 | 50 Taka | `50 Tk` |
+| 5 | 100 Taka | `100 Tk` |
+| 6 | 200 Taka | `200 Tk` |
+| 7 | 500 Taka | `500 Tk` |
+| 8 | 1000 Taka | `1000 Tk` |
 
 ---
 
@@ -62,14 +49,11 @@ The model is fine-tuned from a pretrained YOLOv8 checkpoint and evaluated on a h
 
 ### Collection
 
-Images were collected from:
-- Online open-source image repositories
-- Captured using a mobile phone camera
+Images were collected from online sources and captured using a mobile phone camera, with intentional variation in:
 
-Each denomination class includes images with variation in:
-- **Background** (plain, textured, real-world surfaces)
-- **Lighting conditions** (bright, dim, natural, artificial)
-- **Orientation and scale** (flat, angled, partially overlapping)
+- **Background** — plain, textured, and real-world surfaces
+- **Lighting** — bright, dim, natural, and artificial light
+- **Orientation & Scale** — flat, angled, rotated, and partially overlapping notes
 
 ### Download
 
@@ -77,30 +61,26 @@ Each denomination class includes images with variation in:
 
 ### Dataset Split Statistics
 
-| Split | Images | Percentage |
+| Split | Folder | Approx. % |
 |---|---|---|
-| Training | ~XXX | ~70% |
-| Validation | ~XXX | ~20% |
-| Test | ~XXX | ~10% |
-| **Total** | **~XXX** | **100%** |
-
-### Per-Class Image Count
-
-| Class | # Images |
-|---|---|
-| 2 Taka | XX |
-| 5 Taka | XX |
-| 10 Taka | XX |
-| 20 Taka | XX |
-| 50 Taka | XX |
-| 100 Taka | XX |
-| 200 Taka | XX |
-| 500 Taka | XX |
-| 1000 Taka | XX |
+| Training | `dataset/images/train/` | ~70% |
+| Validation | `dataset/images/val/` | ~20% |
+| Test | `dataset/images/test/` | ~10% |
 
 ### Annotation
 
-All images were annotated using **[Roboflow](https://roboflow.com/)** / **[MakeSense.ai](https://www.makesense.ai/)** and exported in **YOLO format** (`.txt` label files).
+All images were annotated using **[MakeSense.ai](https://www.makesense.ai/)** or **[Roboflow](https://roboflow.com/)** and exported in **YOLO format** (`.txt` files with normalized bounding boxes).
+
+### `data.yaml`
+
+```yaml
+train: dataset/images/train
+val:   dataset/images/val
+test:  dataset/images/test
+
+nc: 9
+names: ['2 Tk', '5 Tk', '10 Tk', '20 Tk', '50 Tk', '100 Tk', '200 Tk', '500 Tk', '1000 Tk']
+```
 
 ---
 
@@ -108,205 +88,202 @@ All images were annotated using **[Roboflow](https://roboflow.com/)** / **[MakeS
 
 ```
 dataset/
-├── data.yaml
-├── train/
-│   ├── images/
-│   │   ├── img_001.jpg
-│   │   └── ...
-│   └── labels/
-│       ├── img_001.txt
-│       └── ...
-├── valid/
-│   ├── images/
-│   └── labels/
-└── test/
-    ├── images/
-    └── labels/
+├── images/
+│   ├── train/        ← Training images (~70%)
+│   ├── val/          ← Validation images (~20%)
+│   └── test/         ← Test images (~10%)
+└── labels/
+    ├── train/        ← YOLO .txt annotations for train
+    ├── val/          ← YOLO .txt annotations for val
+    └── test/         ← YOLO .txt annotations for test
 ```
 
-**`data.yaml`** example:
-```yaml
-path: ./dataset
-train: train/images
-val: valid/images
-test: test/images
-
-nc: 9
-names: ['2tk', '5tk', '10tk', '20tk', '50tk', '100tk', '200tk', '500tk', '1000tk']
+Each label `.txt` file uses the YOLO format (one object per line):
 ```
+<class_id> <x_center> <y_center> <width> <height>
+```
+All coordinates are normalized (0–1) relative to image size.
 
 ---
 
-## ⚙️ Installation
+## 🖼️ Sample Images
 
-### 1. Clone the Repository
+### Training Set — Sample Per Denomination
 
-```bash
-git clone https://github.com/YOUR_USERNAME/taka-note-detection.git
-cd taka-note-detection
-```
+| 2 Tk | 5 Tk | 10 Tk |
+|:---:|:---:|:---:|
+| ![2tk train](dataset/images/train/sample_2tk.jpg) | ![5tk train](dataset/images/train/sample_5tk.jpg) | ![10tk train](dataset/images/train/sample_10tk.jpg) |
 
-### 2. Create a Virtual Environment (Recommended)
+| 20 Tk | 50 Tk | 100 Tk |
+|:---:|:---:|:---:|
+| ![20tk train](dataset/images/train/sample_20tk.jpg) | ![50tk train](dataset/images/train/sample_50tk.jpg) | ![100tk train](dataset/images/train/sample_100tk.jpg) |
 
-```bash
-python -m venv venv
-source venv/bin/activate        # Linux/Mac
-venv\Scripts\activate           # Windows
-```
-
-### 3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-**`requirements.txt`**:
-```
-ultralytics>=8.0.0
-torch>=1.13.0
-torchvision
-opencv-python
-matplotlib
-pandas
-numpy
-PyYAML
-```
-
-### 4. Download the Dataset
-
-Download the dataset from the [Google Drive link](YOUR_GOOGLE_DRIVE_LINK_HERE) and place it in the `dataset/` directory.
+| 200 Tk | 500 Tk | 1000 Tk |
+|:---:|:---:|:---:|
+| ![200tk train](dataset/images/train/sample_200tk.jpg) | ![500tk train](dataset/images/train/sample_500tk.jpg) | ![1000tk train](dataset/images/train/sample_1000tk.jpg) |
 
 ---
 
-## 🚀 Usage
+### Validation Set — Sample Images
 
-### Training
-
-```bash
-python train.py
-```
-
-Or directly with the Ultralytics CLI:
-
-```bash
-yolo detect train \
-  data=dataset/data.yaml \
-  model=yolov8n.pt \
-  epochs=50 \
-  imgsz=640 \
-  batch=16 \
-  name=taka_detector
-```
-
-### Evaluation
-
-```bash
-python evaluate.py
-```
-
-Or:
-
-```bash
-yolo detect val \
-  model=runs/detect/taka_detector/weights/best.pt \
-  data=dataset/data.yaml \
-  split=test
-```
-
-### Inference
-
-**On a single image:**
-
-```bash
-python inference.py --source path/to/image.jpg --weights runs/detect/taka_detector/weights/best.pt
-```
-
-**On a folder of images:**
-
-```bash
-yolo detect predict \
-  model=runs/detect/taka_detector/weights/best.pt \
-  source=dataset/test/images/ \
-  conf=0.5 \
-  save=True
-```
+| Val Sample 1 | Val Sample 2 | Val Sample 3 |
+|:---:|:---:|:---:|
+| ![val1](dataset/images/val/sample_val_1.jpg) | ![val2](dataset/images/val/sample_val_2.jpg) | ![val3](dataset/images/val/sample_val_3.jpg) |
 
 ---
 
-## 🛠️ Model Configuration
+### Test Set — Sample Images
+
+| Test Sample 1 | Test Sample 2 | Test Sample 3 |
+|:---:|:---:|:---:|
+| ![test1](dataset/images/test/sample_test_1.jpg) | ![test2](dataset/images/test/sample_test_2.jpg) | ![test3](dataset/images/test/sample_test_3.jpg) |
+
+---
+
+## 🏋️ Model Training
+
+Training was done in **Google Colab** using `main.ipynb`. The model was fine-tuned from the pretrained `yolov8n.pt` checkpoint.
+
+### Training Configuration
 
 | Parameter | Value |
 |---|---|
-| Base Model | `yolov8n.pt` (pretrained) |
+| Base Model | `yolov8n.pt` (pretrained on COCO) |
 | Epochs | 50 |
 | Batch Size | 16 |
 | Image Resolution | 640 × 640 |
-| Optimizer | SGD (default) |
-| Learning Rate | 0.01 |
 | Number of Classes | 9 |
+| Framework | Ultralytics YOLOv8 |
 
-Training logs and model weights are saved to:
+### Training Code
 
-```
-runs/
-└── detect/
-    └── taka_detector/
-        ├── weights/
-        │   ├── best.pt
-        │   └── last.pt
-        ├── results.csv
-        └── confusion_matrix.png
+```python
+from ultralytics import YOLO
+
+model = YOLO('yolov8n.pt')
+
+results = model.train(
+    data='data.yaml',
+    epochs=50,
+    imgsz=640,
+    batch=16,
+    name='train'
+)
 ```
 
 ---
 
-## 📊 Results
+## 🏷️ Training Batch Samples
+
+YOLOv8 automatically saves batch visualizations during training. These show how annotated currency notes were fed to the model.
+
+### `train_batch0.jpg` — Batch 0 (Ground Truth Labels)
+![Train Batch 0](runs/detect/train/train_batch0.jpg)
+
+### `train_batch1.jpg` — Batch 1 (Ground Truth Labels)
+![Train Batch 1](runs/detect/train/train_batch1.jpg)
+
+### `train_batch2.jpg` — Batch 2 (Ground Truth Labels)
+![Train Batch 2](runs/detect/train/train_batch2.jpg)
+
+---
+
+### Validation Batch — Ground Truth vs Model Predictions
+
+| `val_batch0_labels.jpg` (Ground Truth) | `val_batch0_pred.jpg` (Predictions) |
+|:---:|:---:|
+| ![Val Labels](runs/detect/train/val_batch0_labels.jpg) | ![Val Preds](runs/detect/train/val_batch0_pred.jpg) |
+
+---
+
+## 📊 Model Evaluation
+
+The trained model was evaluated on the held-out **test set**:
+
+```python
+from ultralytics import YOLO
+
+model = YOLO('runs/detect/train/weights/best.pt')
+metrics = model.val(data='data.yaml', split='test')
+
+print(f"mAP50:    {metrics.box.map50:.4f}")
+print(f"mAP50-95: {metrics.box.map:.4f}")
+print(f"Precision:{metrics.box.mp:.4f}")
+print(f"Recall:   {metrics.box.mr:.4f}")
+```
 
 ### Evaluation Metrics (Test Set)
 
 | Metric | Score |
 |---|---|
-| mAP@0.5 | X.XX |
-| mAP@0.5:0.95 | X.XX |
-| Precision | X.XX |
-| Recall | X.XX |
-
-### Confusion Matrix
-
-![Confusion Matrix](results/confusion_matrix.png)
-
-### Training Curves
-
-![Training Results](results/results.png)
-
-### Sample Detections
-
-| Input Image | Detection Output |
-|---|---|
-| ![](assets/sample1_input.jpg) | ![](assets/sample1_output.jpg) |
-| ![](assets/sample2_input.jpg) | ![](assets/sample2_output.jpg) |
+| mAP@0.5 | _(fill after evaluation)_ |
+| mAP@0.5:0.95 | _(fill after evaluation)_ |
+| Precision | _(fill after evaluation)_ |
+| Recall | _(fill after evaluation)_ |
 
 ---
 
-## 🪙 Bonus: Coin Detection
+## 📈 Results
 
-As part of the optional bonus task, the model was extended to also detect **Bangladeshi coins**:
+### Training & Validation Curves
+![Results](runs/detect/train/results.png)
 
-| Denomination | Label |
-|---|---|
-| 2 Taka Coin | `coin_2tk` |
-| 5 Taka Coin | `coin_5tk` |
+### Confusion Matrix
+![Confusion Matrix](runs/detect/train/confusion_matrix.png)
 
-The model was retrained with the additional coin classes. Updated results and inference samples for coin detection are available in [`results/bonus/`](results/bonus/).
+### Precision-Recall Curve
+![PR Curve](runs/detect/train/PR_curve.png)
+
+### F1 Score Curve
+![F1 Curve](runs/detect/train/F1_curve.png)
+
+### Sample Test Detections (with Bounding Boxes)
+
+| Prediction 1 | Prediction 2 |
+|:---:|:---:|
+| ![pred1](runs/detect/train/val_batch0_pred.jpg) | ![pred2](runs/detect/train/val_batch1_pred.jpg) |
+
+---
+
+## ⚙️ Installation & Usage
+
+### 1. Clone the Repository
 
 ```bash
-yolo detect train \
-  data=dataset/data_with_coins.yaml \
-  model=runs/detect/taka_detector/weights/best.pt \
-  epochs=30 \
-  imgsz=640 \
-  batch=16 \
-  name=taka_detector_with_coins
+git clone https://github.com/somairhossain/Bangladeshi-Taka-Note-Detection-Using-YOLOv8.git
+cd Bangladeshi-Taka-Note-Detection-Using-YOLOv8
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install ultralytics opencv-python matplotlib pandas numpy PyYAML
+```
+
+### 3. Download the Dataset
+
+Download from [Google Drive](YOUR_GOOGLE_DRIVE_LINK_HERE) and extract into the `dataset/` folder.
+
+### 4. Train the Model
+
+```bash
+python -c "
+from ultralytics import YOLO
+model = YOLO('yolov8n.pt')
+model.train(data='data.yaml', epochs=50, imgsz=640, batch=16)
+"
+```
+
+Or open `main.ipynb` directly in Google Colab.
+
+### 5. Run Inference on Test Images
+
+```bash
+yolo detect predict \
+  model=runs/detect/train/weights/best.pt \
+  source=dataset/images/test/ \
+  conf=0.5 \
+  save=True
 ```
 
 ---
@@ -314,53 +291,86 @@ yolo detect train \
 ## 🗂️ Project Structure
 
 ```
-taka-note-detection/
+Bangladeshi-Taka-Note-Detection-Using-YOLOv8/
 │
-├── dataset/                    # Dataset (download from Google Drive)
-│   ├── data.yaml
-│   ├── train/
-│   ├── valid/
-│   └── test/
+├── dataset/
+│   ├── images/
+│   │   ├── train/              # Training images
+│   │   ├── val/                # Validation images
+│   │   └── test/               # Test images
+│   └── labels/
+│       ├── train/              # YOLO annotations for train
+│       ├── val/                # YOLO annotations for val
+│       └── test/               # YOLO annotations for test
 │
-├── runs/                       # Training outputs (auto-generated)
+├── runs/
 │   └── detect/
-│       └── taka_detector/
-│           └── weights/
-│               ├── best.pt
-│               └── last.pt
+│       └── train/
+│           ├── weights/
+│           │   ├── best.pt     # Best model checkpoint
+│           │   └── last.pt     # Last epoch checkpoint
+│           ├── train_batch0.jpg
+│           ├── train_batch1.jpg
+│           ├── train_batch2.jpg
+│           ├── val_batch0_labels.jpg
+│           ├── val_batch0_pred.jpg
+│           ├── confusion_matrix.png
+│           ├── results.png
+│           ├── PR_curve.png
+│           ├── F1_curve.png
+│           └── results.csv
 │
-├── results/                    # Evaluation results & sample images
-│   ├── confusion_matrix.png
-│   ├── results.png
-│   └── bonus/
-│
-├── assets/                     # README images
-│
-├── train.py                    # Training script
-├── evaluate.py                 # Evaluation script
-├── inference.py                # Inference script
-├── requirements.txt
-├── notebook.ipynb              # Colab/Jupyter notebook (includes Drive link)
+├── data.yaml                   # Dataset configuration
+├── yolov8n.pt                  # Pretrained YOLOv8n base model
+├── main.ipynb                  # Full Colab training notebook
 └── README.md
 ```
 
 ---
 
+## 🪙 Bonus: Coin Detection
+
+As an optional extension (15 bonus marks), the model is retrained to also detect Bangladeshi coins:
+
+| Denomination | New Class Label |
+|---|---|
+| 2 Taka Coin | `2 Tk Coin` |
+| 5 Taka Coin | `5 Tk Coin` |
+
+**Steps:**
+1. Collect and annotate coin images.
+2. Update `data.yaml` → set `nc: 11` and add coin class names.
+3. Fine-tune from the already-trained `best.pt`:
+
+```python
+model = YOLO('runs/detect/train/weights/best.pt')
+model.train(
+    data='data_with_coins.yaml',
+    epochs=30,
+    imgsz=640,
+    batch=16,
+    name='train_with_coins'
+)
+```
+
+Updated evaluation results and inference samples for coin detection are in `runs/detect/train_with_coins/`.
+
+---
+
 ## 🙏 Acknowledgements
 
-- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) — model framework
-- [Roboflow](https://roboflow.com/) — annotation and dataset management
+- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) — model architecture & training framework
+- [Roboflow](https://roboflow.com/) — dataset annotation & management
 - [MakeSense.ai](https://www.makesense.ai/) — alternative annotation tool
-- Bangladesh Bank — reference images for currency notes
+- Bangladesh Bank — reference images for currency denominations
 
 ---
 
 ## 📬 Contact
 
-**Author:** Your Name  
-**Email:** your.email@example.com  
-**GitHub:** [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
+**Author:** Somair Hossain  
+**GitHub:** [@somairhossain](https://github.com/somairhossain)
 
 ---
 
-*This project was submitted as part of Module 16 Assignment on Object Detection using YOLO.*
+*Submitted as part of Module 16 Assignment — Object Detection using YOLOv8*
