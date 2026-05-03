@@ -232,10 +232,10 @@ print(f"Recall:   {metrics.box.mr:.4f}")
 ![Confusion Matrix](runs/detect/train/confusion_matrix.png)
 
 ### Precision-Recall Curve
-![PR Curve](runs/detect/train/PR_curve.png)
+![PR Curve](runs/detect/train/BoxPR_curve.png)
 
 ### F1 Score Curve
-![F1 Curve](runs/detect/train/F1_curve.png)
+![F1 Curve](runs/detect/train/BoxF1_curve.png)
 
 ### Sample Test Detections (with Bounding Boxes)
 
