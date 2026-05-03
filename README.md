@@ -112,15 +112,15 @@ All coordinates are normalized (0–1) relative to image size.
 
 | 2 Tk | 5 Tk | 10 Tk |
 |:---:|:---:|:---:|
-| [2tk train]<img width="640" height="480" alt="2  Taka_003" src="https://github.com/user-attachments/assets/fe9c5853-49c1-42fb-8360-7ddd92fed161" /> | [5tk train]<img width="640" height="480" alt="5  Taka_452" src="https://github.com/user-attachments/assets/80f995f0-bd2d-40aa-861c-11119455cd83" /> | [10tk train]<img width="640" height="480" alt="10  Taka_194" src="https://github.com/user-attachments/assets/df089667-e72a-4527-b859-623d1b3f86e7" /> |
+| <img width="640" height="480" alt="2  Taka_003" src="https://github.com/user-attachments/assets/fe9c5853-49c1-42fb-8360-7ddd92fed161" /> | <img width="640" height="480" alt="5  Taka_452" src="https://github.com/user-attachments/assets/80f995f0-bd2d-40aa-861c-11119455cd83" /> | <img width="640" height="480" alt="10  Taka_194" src="https://github.com/user-attachments/assets/df089667-e72a-4527-b859-623d1b3f86e7" /> |
 
 | 20 Tk | 50 Tk | 100 Tk |
 |:---:|:---:|:---:|
-| [20tk train]<img width="640" height="480" alt="20  Taka_095" src="https://github.com/user-attachments/assets/5e92c12a-dc0d-4054-aae4-f1193eaf3638" /> | [50tk train]<img width="640" height="480" alt="50  Taka_032" src="https://github.com/user-attachments/assets/29e8456e-33f8-4473-b81c-88f5963eb5fc" /> | [100tk train](<img width="640" height="480" alt="100  Taka_092" src="https://github.com/user-attachments/assets/d6702bd7-d726-4789-a190-6f0257b20a07" /> |
+| <img width="640" height="480" alt="20  Taka_095" src="https://github.com/user-attachments/assets/5e92c12a-dc0d-4054-aae4-f1193eaf3638" /> | <img width="640" height="480" alt="50  Taka_032" src="https://github.com/user-attachments/assets/29e8456e-33f8-4473-b81c-88f5963eb5fc" /> | <img width="640" height="480" alt="100  Taka_092" src="https://github.com/user-attachments/assets/d6702bd7-d726-4789-a190-6f0257b20a07" /> |
 
 | 200 Tk | 500 Tk | 1000 Tk |
 |:---:|:---:|:---:|
-| [200tk train]<img width="640" height="480" alt="200  Taka_015" src="https://github.com/user-attachments/assets/105a8fa0-0dda-4478-be5b-bdec9b410ce6" /> | [500tk train]<img width="640" height="480" alt="500 Taka_0015" src="https://github.com/user-attachments/assets/49deef08-df86-44c3-871f-5014bc5c3693" /> | [1000tk train]<img width="640" height="480" alt="1000  Taka_185" src="https://github.com/user-attachments/assets/fa008ce6-5fdd-43a9-8e87-143f2635beaa" /> |
+| <img width="640" height="480" alt="200  Taka_015" src="https://github.com/user-attachments/assets/105a8fa0-0dda-4478-be5b-bdec9b410ce6" /> | <img width="640" height="480" alt="500 Taka_0015" src="https://github.com/user-attachments/assets/49deef08-df86-44c3-871f-5014bc5c3693" /> | <img width="640" height="480" alt="1000  Taka_185" src="https://github.com/user-attachments/assets/fa008ce6-5fdd-43a9-8e87-143f2635beaa" /> |
 
 ---
 
@@ -128,7 +128,7 @@ All coordinates are normalized (0–1) relative to image size.
 
 | Val Sample 1 | Val Sample 2 | Val Sample 3 |
 |:---:|:---:|:---:|
-| ![val1](dataset/images/val/sample_val_1.jpg) | ![val2](dataset/images/val/sample_val_2.jpg) | ![val3](dataset/images/val/sample_val_3.jpg) |
+| <img width="640" height="480" alt="1000" src="https://github.com/user-attachments/assets/639f0759-3b2a-4170-b703-c9b162bd7506" /> | <img width="640" height="480" alt="500 Taka_0018" src="https://github.com/user-attachments/assets/0d011b85-1fb4-48c3-88ef-14e6b4fbb403" /> | <img width="640" height="480" alt="200  Taka_052" src="https://github.com/user-attachments/assets/6ae4d8f6-b760-4e77-8f84-b4d0d8493dc4" /> |
 
 ---
 
@@ -136,7 +136,7 @@ All coordinates are normalized (0–1) relative to image size.
 
 | Test Sample 1 | Test Sample 2 | Test Sample 3 |
 |:---:|:---:|:---:|
-| ![test1](dataset/images/test/sample_test_1.jpg) | ![test2](dataset/images/test/sample_test_2.jpg) | ![test3](dataset/images/test/sample_test_3.jpg) |
+| <img width="600" height="400" alt="bangladeshi-taka-money-bills-big-600nw-2608434883" src="https://github.com/user-attachments/assets/f75039fb-85db-4991-ac7f-d699a48266f5" /> | <img width="640" height="480" alt="image-11-1024x452" src="https://github.com/user-attachments/assets/19433f62-cba5-48fd-a427-637ed9c31504" /> | <img width="640" height="480" alt="200  Taka_084" src="https://github.com/user-attachments/assets/7ece352b-cf71-4aab-a251-41bd856c3b93" /> |
 
 ---
 
