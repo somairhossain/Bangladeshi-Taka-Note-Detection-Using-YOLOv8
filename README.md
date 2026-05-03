@@ -116,7 +116,7 @@ All coordinates are normalized (0–1) relative to image size.
 
 | 20 Tk | 50 Tk | 100 Tk |
 |:---:|:---:|:---:|
-| ![20tk train](dataset/images/train/20  Taka_008.jpg) | ![50tk train](dataset/images/train/50  Taka_002.jpg) | ![100tk train](dataset/images/train/100  Taka_010.jpg) |
+| ![20tk train](dataset/images/train/20  Taka_008.jpg) | ![50tk train](dataset/images/train/50  Taka_002.jpg) | ![100tk train]([dataset/images/train/100  Taka_010.jpg](https://github.com/somairhossain/Bangladeshi-Taka-Note-Detection-Using-YOLOv8/blob/main/dataset/images/train/10%20%20Taka_001.jpg)) |
 
 | 200 Tk | 500 Tk | 1000 Tk |
 |:---:|:---:|:---:|
