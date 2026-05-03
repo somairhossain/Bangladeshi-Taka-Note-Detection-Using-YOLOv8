@@ -120,7 +120,7 @@ All coordinates are normalized (0–1) relative to image size.
 
 | 200 Tk | 500 Tk | 1000 Tk |
 |:---:|:---:|:---:|
-| ![200tk train](<img width="3029" height="1274" alt="200  Taka_015" src="https://github.com/user-attachments/assets/105a8fa0-0dda-4478-be5b-bdec9b410ce6" />) | ![500tk train](<img width="3000" height="1248" alt="500 Taka_0015" src="https://github.com/user-attachments/assets/49deef08-df86-44c3-871f-5014bc5c3693" />) | ![1000tk train](<img width="3000" height="1261" alt="1000  Taka_150" src="https://github.com/user-attachments/assets/272d7450-3949-451e-9de5-00b24a1f9f0d" />) |
+| ![200tk train](<img width="3029" height="1274" alt="200  Taka_015" src="https://github.com/user-attachments/assets/105a8fa0-0dda-4478-be5b-bdec9b410ce6" />) | ![500tk train](<img width="3000" height="1248" alt="500 Taka_0015" src="https://github.com/user-attachments/assets/49deef08-df86-44c3-871f-5014bc5c3693" />) | ![1000tk train](<img width="3092" height="1308" alt="1000  Taka_185" src="https://github.com/user-attachments/assets/fa008ce6-5fdd-43a9-8e87-143f2635beaa" />) |
 
 ---
 
