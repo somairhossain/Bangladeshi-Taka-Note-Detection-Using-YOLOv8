@@ -1,4 +1,4 @@
-<img width="3000" height="1808" alt="2  Taka_003" src="https://github.com/user-attachments/assets/955d3329-c279-4a44-9f12-0689327f2dc6" /># 🇧🇩 Bangladeshi Taka Note Detection Using YOLOv8
+# 🇧🇩 Bangladeshi Taka Note Detection Using YOLOv8
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-brightgreen)](https://github.com/ultralytics/ultralytics)
@@ -112,24 +112,15 @@ All coordinates are normalized (0–1) relative to image size.
 
 | 2 Tk | 5 Tk | 10 Tk |
 |:---:|:---:|:---:|
-| ![2tk train](<img width="3000" height="1808" alt="2  Taka_003" src="https://github.com/user-attachments/assets/fe9c5853-49c1-42fb-8360-7ddd92fed161" />
-) | ![5tk train](<img width="3000" height="1616" alt="5  Taka_452" src="https://github.com/user-attachments/assets/80f995f0-bd2d-40aa-861c-11119455cd83" />
-) | ![10tk train](<img width="3000" height="1533" alt="10  Taka_194" src="https://github.com/user-attachments/assets/df089667-e72a-4527-b859-623d1b3f86e7" />
-) |
+| ![2tk train](<img width="3000" height="1808" alt="2  Taka_003" src="https://github.com/user-attachments/assets/fe9c5853-49c1-42fb-8360-7ddd92fed161" />) | ![5tk train](<img width="3000" height="1616" alt="5  Taka_452" src="https://github.com/user-attachments/assets/80f995f0-bd2d-40aa-861c-11119455cd83" />) | ![10tk train](<img width="3000" height="1533" alt="10  Taka_194" src="https://github.com/user-attachments/assets/df089667-e72a-4527-b859-623d1b3f86e7" />) |
 
 | 20 Tk | 50 Tk | 100 Tk |
 |:---:|:---:|:---:|
-| ![20tk train](<img width="2340" height="1069" alt="20  Taka_095" src="https://github.com/user-attachments/assets/5e92c12a-dc0d-4054-aae4-f1193eaf3638" />
-) | ![50tk train](<img width="3022" height="1407" alt="50  Taka_032" src="https://github.com/user-attachments/assets/29e8456e-33f8-4473-b81c-88f5963eb5fc" />
-) | ![100tk train](<img width="3015" height="1301" alt="100  Taka_092" src="https://github.com/user-attachments/assets/d6702bd7-d726-4789-a190-6f0257b20a07" />
-) |
+| ![20tk train](<img width="2340" height="1069" alt="20  Taka_095" src="https://github.com/user-attachments/assets/5e92c12a-dc0d-4054-aae4-f1193eaf3638" />) | ![50tk train](<img width="3022" height="1407" alt="50  Taka_032" src="https://github.com/user-attachments/assets/29e8456e-33f8-4473-b81c-88f5963eb5fc" />) | ![100tk train](<img width="3015" height="1301" alt="100  Taka_092" src="https://github.com/user-attachments/assets/d6702bd7-d726-4789-a190-6f0257b20a07" />) |
 
 | 200 Tk | 500 Tk | 1000 Tk |
 |:---:|:---:|:---:|
-| ![200tk train](<img width="3029" height="1274" alt="200  Taka_015" src="https://github.com/user-attachments/assets/105a8fa0-0dda-4478-be5b-bdec9b410ce6" />
-) | ![500tk train](<img width="3000" height="1248" alt="500 Taka_0015" src="https://github.com/user-attachments/assets/49deef08-df86-44c3-871f-5014bc5c3693" />
-) | ![1000tk train](<img width="3000" height="1261" alt="1000  Taka_150" src="https://github.com/user-attachments/assets/272d7450-3949-451e-9de5-00b24a1f9f0d" />
-) |
+| ![200tk train](<img width="3029" height="1274" alt="200  Taka_015" src="https://github.com/user-attachments/assets/105a8fa0-0dda-4478-be5b-bdec9b410ce6" />) | ![500tk train](<img width="3000" height="1248" alt="500 Taka_0015" src="https://github.com/user-attachments/assets/49deef08-df86-44c3-871f-5014bc5c3693" />) | ![1000tk train](<img width="3000" height="1261" alt="1000  Taka_150" src="https://github.com/user-attachments/assets/272d7450-3949-451e-9de5-00b24a1f9f0d" />) |
 
 ---
 
