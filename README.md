@@ -57,7 +57,7 @@ Images were collected from online sources and captured using a mobile phone came
 
 ### Download
 
-📁 **[Google Drive Dataset Link](YOUR_GOOGLE_DRIVE_LINK_HERE)**
+📁 **[Google Drive Dataset Link](https://drive.google.com/drive/folders/1dBGFid98TA9eUwpCV_bSEdyw4DgCRWV6?usp=sharing)**
 
 ### Dataset Split Statistics
 
@@ -69,7 +69,7 @@ Images were collected from online sources and captured using a mobile phone came
 
 ### Annotation
 
-All images were annotated using **[MakeSense.ai](https://www.makesense.ai/)** or **[Roboflow](https://roboflow.com/)** and exported in **YOLO format** (`.txt` files with normalized bounding boxes).
+All images were annotated using **[MakeSense.ai](https://www.makesense.ai/)** and exported in **YOLO format** (`.txt` files with normalized bounding boxes).
 
 ### `data.yaml`
 
@@ -112,15 +112,15 @@ All coordinates are normalized (0–1) relative to image size.
 
 | 2 Tk | 5 Tk | 10 Tk |
 |:---:|:---:|:---:|
-| ![2tk train](dataset/images/train/sample_2tk.jpg) | ![5tk train](dataset/images/train/sample_5tk.jpg) | ![10tk train](dataset/images/train/sample_10tk.jpg) |
+| ![2tk train](dataset/images/train/2 Taka_001.jpg) | ![5tk train](dataset/images/train/5  Taka_009.jpg) | ![10tk train](dataset/images/train/10  Taka_001.jpg) |
 
 | 20 Tk | 50 Tk | 100 Tk |
 |:---:|:---:|:---:|
-| ![20tk train](dataset/images/train/sample_20tk.jpg) | ![50tk train](dataset/images/train/sample_50tk.jpg) | ![100tk train](dataset/images/train/sample_100tk.jpg) |
+| ![20tk train](dataset/images/train/20  Taka_008.jpg) | ![50tk train](dataset/images/train/50  Taka_002.jpg) | ![100tk train](dataset/images/train/100  Taka_010.jpg) |
 
 | 200 Tk | 500 Tk | 1000 Tk |
 |:---:|:---:|:---:|
-| ![200tk train](dataset/images/train/sample_200tk.jpg) | ![500tk train](dataset/images/train/sample_500tk.jpg) | ![1000tk train](dataset/images/train/sample_1000tk.jpg) |
+| ![200tk train](dataset/images/train/200  Taka_002.jpg) | ![500tk train](dataset/images/train/500 Taka_0001.jpg) | ![1000tk train](dataset/images/train/1000  Taka_102.jpg) |
 
 ---
 
